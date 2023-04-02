@@ -7,7 +7,7 @@ Esse repositório contém o código para o trabalho final da disciplina de Algor
 ```
 import requests
 
-dados = {"url": "https://bot-assessor-mailing.onrender.com"}`
+dados = {"url": "https://bot-assessor-mailing.onrender.com"}
 resposta = requests.post(f"https://api.telegram.org/bot{TELEGRAM_API_KEY}/setWebhook", data=dados)
 print(resposta.text)
 ```
