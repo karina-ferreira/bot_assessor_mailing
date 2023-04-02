@@ -3,3 +3,7 @@ Esse repositório contém o código para o trabalho final da disciplina de Algor
 
 ### SetWebhook Telegram API
 - colocar aqui porque será rodado apenas 1x
+
+dados = {"url": "https://bot-assessor-mailing.onrender.com"}
+resposta = requests.post(f"https://api.telegram.org/bot{FAZER UMA CHAVE}/setWebhook", data=dados)
+print(resposta.text)
