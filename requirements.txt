@@ -4,6 +4,5 @@ gspread
 gunicorn
 oauth2client
 requests
-request
 sendgrid
 time
