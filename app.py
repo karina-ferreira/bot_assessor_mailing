@@ -1,10 +1,8 @@
 import os
 
 import datetime
-import getpass
 import gspread
 import json
-import pandas as pd
 import requests
 import sendgrid
 import time
@@ -12,8 +10,22 @@ import time
 from flask import Flask, request
 from io import StringIO 
 from oauth2client.service_account import ServiceAccountCredentials
-from sendgrid.helpers.mail import Mail, Email, To, Content
+from sendgrid import SendGridAPIClient
+from sendgrid.helpers.mail import Mail
 
+
+# ______________________________ variáveis de ambiente
+
+TELEGRAM_API_KEY = os.environ["TELEGRAM_API_KEY"]
+SENDGRID_KEY = os.environ["SENDGRID_KEY"] 
+GOOGLE_SHEETS_KEY = os.environ["GOOGLE_SHEETS_KEY"]
+GOOGLE_SHEETS_CREDENTIALS = os.environ["GOOGLE_SHEETS_CREDENTIALS"] 
+with open("credenciais.json", mode="w") as arquivo:
+  arquivo.write(GOOGLE_SHEETS_CREDENTIALS)
+  
+conta = ServiceAccountCredentials.from_json_keyfile_name("credenciais.json")
+api = gspread.authorize(conta)
+planilha = api.open_by_key(f'{GOOGLE_SHEETS_KEY}') 
 
 # ______________________________ site
 
