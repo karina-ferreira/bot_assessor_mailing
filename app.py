@@ -14,10 +14,10 @@ from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
 
 
-# ______________________________ variáveis de ambiente
+# ______________________________ variáveis de ambiente _________________________
 
 TELEGRAM_API_KEY = os.environ["TELEGRAM_API_KEY"]
-SENDGRID_KEY = os.environ["SENDGRID_KEY"] 
+SENDGRID_API_KEY = os.environ["SENDGRID_API_KEY"] 
 GOOGLE_SHEETS_KEY = os.environ["GOOGLE_SHEETS_KEY"]
 GOOGLE_SHEETS_CREDENTIALS = os.environ["GOOGLE_SHEETS_CREDENTIALS"] 
 with open("credenciais.json", mode="w") as arquivo:
@@ -25,9 +25,11 @@ with open("credenciais.json", mode="w") as arquivo:
   
 conta = ServiceAccountCredentials.from_json_keyfile_name("credenciais.json")
 api = gspread.authorize(conta)
-planilha = api.open_by_key(f'{GOOGLE_SHEETS_KEY}') 
+planilha = api.open_by_key(f'{GOOGLE_SHEETS_KEY}')
+sheet_recebidas = planilha.worksheet("comentarios") 
+sheet_mailing = planilha.worksheet("mailing") 
 
-# ______________________________ site
+# ______________________________ site __________________________________________
 
 app = Flask(__name__)
 
