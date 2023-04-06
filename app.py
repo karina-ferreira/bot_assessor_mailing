@@ -36,3 +36,5 @@ app = Flask(__name__)
 @app.route("/")
 def index():
   return "Esse é o site do Bot Assessor de Mailing. Para conferir a documentação acesse: https://github.com/karina-ferreira/bot_assessor_mailing"
+
+# ______________________________ bot ___________________________________________
