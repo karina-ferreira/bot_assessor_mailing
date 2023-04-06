@@ -50,20 +50,20 @@ def telegram_bot():
         usuarios_permitidos = ["kuaraina", "kuaraina2"]
 
         # Loop para processar cada atualização recebida
-        for update in dados:
+        for cada_update in update:
             update_id = update["update_id"]
 
             # Verifica se o usuário é permitido
-            if "username" in update["message"]["from"] and update["message"]["from"]["username"] in usuarios_permitidos:
+            if "username" in cada_update["message"]["from"] and cada_update["message"]["from"]["username"] in usuarios_permitidos:
                 # Extrai dados para mostrar mensagem recebida
-                first_name = update["message"]["from"]["first_name"]
-                sender_id = update["message"]["from"]["id"]
-                if "text" not in update["message"]:
+                first_name = cada_update["message"]["from"]["first_name"]
+                sender_id = cada_update["message"]["from"]["id"]
+                if "text" not in cada_update["message"]:
                     continue  # Essa mensagem não é um texto!
-                message = update["message"]["text"]
-                chat_id = update["message"]["chat"]["id"]
-                datahora = str(datetime.datetime.fromtimestamp(update["message"]["date"]))
-                username = update["message"]["from"]["username"] if "username" in update["message"]["from"] else "[não definido]"
+                message = cada_update["message"]["text"]
+                chat_id = cada_update["message"]["chat"]["id"]
+                datahora = str(datetime.datetime.fromtimestamp(cada_update["message"]["date"]))
+                username = cada_update["message"]["from"]["username"] if "username" in cada_update["message"]["from"] else "[não definido]"
                 print(f"[{datahora}] Nova mensagem de {first_name} @{username} ({chat_id}): {message}")
                 mensagens.append([datahora, "recebida", username, first_name, chat_id, message])
 
@@ -79,4 +79,3 @@ def telegram_bot():
                 texto_resposta_negado = "Você não tem permissão para utilizar esse serviço."
                 # Se o usuário não for permitido, pula para a próxima atualização
                 continue
-
