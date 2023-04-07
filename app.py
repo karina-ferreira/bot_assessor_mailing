@@ -52,6 +52,7 @@ def telegram_bot():
     user_name = update['message']['from']['username']
     sender_id = update['message']['from']['id']
     chat_id = update['message']['chat']['id']
+    message = update["message"]["text"]
     
 # Define qual será a resposta
     if message == "/start":
