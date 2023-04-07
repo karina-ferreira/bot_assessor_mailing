@@ -1,13 +1,12 @@
 import os
 
-import datetime
 import gspread
 import json
 import requests
 import sendgrid
 import time
 
-from datetime import date, time, timedelta
+from datetime import date, time
 from datetime import datetime
 from flask import Flask, request
 from io import StringIO 
@@ -55,7 +54,7 @@ def telegram_bot():
     sender_id = update['message']['from']['id']
     chat_id = update['message']['chat']['id']
     message = update["message"]["text"]
-    date = datetime.fromtimestamp(update['message']['date']).date().strftime('%d/%m/%Y')
+    date = datetime.fromtimestamp(update['message']['date']).date()
     time = datetime.fromtimestamp(update['message']['date']).time()
     
 # Define qual será a resposta
@@ -67,7 +66,7 @@ def telegram_bot():
 # Envia a resposta       
     nova_mensagem = {"chat_id": chat_id, "text": texto_resposta}
     requests.post(f"https://api.telegram.org./bot{TELEGRAM_API_KEY}/sendMessage", data=nova_mensagem)
-    mensagens.append([datahora, "enviada", username, first_name, chat_id, texto_resposta])
+    mensagens.append([date, time, "enviada", username, first_name, chat_id, texto_resposta])
 
     print(resposta.text)
     return "ok"
