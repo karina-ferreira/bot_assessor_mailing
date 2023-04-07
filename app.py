@@ -38,7 +38,7 @@ app = Flask(__name__)
 def index():
   return "Esse é o site do Bot Assessor de Mailing. Para conferir a documentação acesse: https://github.com/karina-ferreira/bot_assessor_mailing"
 
-# ______________________________ bot (teste 3 corrigindo mensagens repetidas) ____________________
+# ______________________________ bot (teste usuários permitidos) _____________________________
 
 @app.route("/telegram-bot", methods = ["POST"])
 def telegram_bot():
@@ -55,6 +55,13 @@ def telegram_bot():
     message = update["message"]["text"]
     date = datetime.fromtimestamp(update['message']['date']).date()
     time = datetime.fromtimestamp(update['message']['date']).time()
+
+# Define a lista de usuários permitidos
+    usuarios_permitidos = ["kuaraina", "kuaraina2"]    
+
+# Verifica se o usuário está na lista de usuários permitidos
+    if update['message']['from']['username'] not in usuarios_permitidos:
+        return "Você não está autorizado a usar este bot."
     
 # Define qual será a resposta
     if message == "/start":
