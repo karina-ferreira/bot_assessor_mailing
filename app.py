@@ -39,7 +39,7 @@ def index():
 
 # ______________________________ bot (teste quase completo) ___________________________________________ 
 
-@app.route(f'/{TELEGRAM_API_KEY}', methods=['POST'])
+@app.route("/telegram-bot", methods = ["POST"])
 def telegram_bot():
     mensagens = []
   
