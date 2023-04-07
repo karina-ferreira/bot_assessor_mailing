@@ -7,6 +7,8 @@ import requests
 import sendgrid
 import time
 
+from datetime import date, time, timedelta
+from datetime import datetime
 from flask import Flask, request
 from io import StringIO 
 from oauth2client.service_account import ServiceAccountCredentials
@@ -53,6 +55,8 @@ def telegram_bot():
     sender_id = update['message']['from']['id']
     chat_id = update['message']['chat']['id']
     message = update["message"]["text"]
+    date = datetime.fromtimestamp(update['message']['date']).date().strftime('%d/%m/%Y')
+    time = datetime.fromtimestamp(update['message']['date']).time()
     
 # Define qual será a resposta
     if message == "/start":
