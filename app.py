@@ -52,8 +52,6 @@ def telegram_bot():
     user_name = update['message']['from']['username']
     sender_id = update['message']['from']['id']
     chat_id = update['message']['chat']['id']
-    date = datetime.fromtimestamp(update['message']['date']).date().strftime('%d/%m/%Y')
-    time = datetime.fromtimestamp(update['message']['date']).time()
 
     # Define qual será a resposta e envia
     if message == "/start":
