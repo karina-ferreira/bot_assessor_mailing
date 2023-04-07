@@ -45,23 +45,24 @@ def telegram_bot():
   
     update = request.json 
 
-    # dados da mensagem
+# Dados da mensagem
     update_id = update['update_id']
     first_name = update['message']['from']['first_name']
     last_name = update['message']['from']['last_name']
     user_name = update['message']['from']['username']
     sender_id = update['message']['from']['id']
     chat_id = update['message']['chat']['id']
-
-    # Define qual será a resposta e envia
+    
+# Define qual será a resposta
     if message == "/start":
         texto_resposta = "Este é um robô privado para envio de conteúdo sensível."
     else:
         texto_resposta = "estou em fase de testes!" #**************************** AQUI ENTRA A INTEGRAÇÃO COM GSHEETS E SENDGRID / fazer funções
         
-        nova_mensagem = {"chat_id": chat_id, "text": texto_resposta}
-        requests.post(f"https://api.telegram.org./bot{TELEGRAM_API_KEY}/sendMessage", data=nova_mensagem)
-        mensagens.append([datahora, "enviada", username, first_name, chat_id, texto_resposta])
+# Envia a resposta       
+    nova_mensagem = {"chat_id": chat_id, "text": texto_resposta}
+    requests.post(f"https://api.telegram.org./bot{TELEGRAM_API_KEY}/sendMessage", data=nova_mensagem)
+    mensagens.append([datahora, "enviada", username, first_name, chat_id, texto_resposta])
 
     print(resposta.text)
     return "ok"
