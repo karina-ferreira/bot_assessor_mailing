@@ -60,7 +60,9 @@ def telegram_bot():
     usuarios_permitidos = ["kuaraina", "kuaraina2"]    
 
 # Verifica se o usuário está na lista de usuários permitidos
-    if update['message']['from']['username'] not in usuarios_permitidos:
+    #if update['message']['from']['username'] not in usuarios_permitidos:
+        #return "Você não está autorizado a usar este bot."
+    if not user_name or user_name not in usuarios_permitidos:
         return "Você não está autorizado a usar este bot."
     
 # Define qual será a resposta
