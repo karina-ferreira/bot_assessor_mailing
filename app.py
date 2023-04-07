@@ -47,7 +47,8 @@ def telegram_bot():
         update = request.get_json()
 
         # Defina a lista de usuários permitidos
-        usuarios_permitidos = ["kuaraina", "kuaraina2"]
+        usuarios_permitidos = []
+        #usuarios_permitidos = ["kuaraina", "kuaraina2"]
 
         # Loop para processar cada atualização recebida
         for cada_update in update:
