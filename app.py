@@ -81,4 +81,4 @@ def telegram_bot():
                 # Se o usuário não for permitido, pula para a próxima atualização
                 continue
                 
-        print(resposta.text)
+    print(resposta.text)
