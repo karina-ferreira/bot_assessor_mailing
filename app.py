@@ -38,11 +38,10 @@ app = Flask(__name__)
 def index():
   return "Esse é o site do Bot Assessor de Mailing. Para conferir a documentação acesse: https://github.com/karina-ferreira/bot_assessor_mailing"
 
-# ______________________________ bot (teste 2 refazendo o código) ____________________
+# ______________________________ bot (teste 3 corrigindo mensagens repetidas) ____________________
 
 @app.route("/telegram-bot", methods = ["POST"])
 def telegram_bot():
-    mensagens = []
   
     update = request.json 
 
@@ -66,7 +65,6 @@ def telegram_bot():
 # Envia a resposta       
     nova_mensagem = {"chat_id": chat_id, "text": texto_resposta}
     requests.post(f"https://api.telegram.org./bot{TELEGRAM_API_KEY}/sendMessage", data=nova_mensagem)
-    mensagens.append([date, time, "enviada", username, first_name, chat_id, texto_resposta])
 
     print(resposta.text)
     return "ok"
