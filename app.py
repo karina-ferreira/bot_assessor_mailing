@@ -80,3 +80,5 @@ def telegram_bot():
                 texto_resposta_negado = "Você não tem permissão para utilizar esse serviço."
                 # Se o usuário não for permitido, pula para a próxima atualização
                 continue
+                
+        print(resposta.text)
