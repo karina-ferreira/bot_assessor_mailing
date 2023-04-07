@@ -40,8 +40,6 @@ def index():
 
 # ______________________________ bot (teste usuários permitidos) _____________________________
 
-# ______________________________ bot (teste usuários permitidos) _____________________________
-
 @app.route("/telegram-bot", methods = ["POST"])
 def telegram_bot():
   
@@ -77,3 +75,5 @@ def telegram_bot():
     requests.post(f"https://api.telegram.org./bot{TELEGRAM_API_KEY}/sendMessage", data=nova_mensagem)
 
     return "ok"
+  
+# ______________________________ integração com SendGrid e GSheets _____________________________
