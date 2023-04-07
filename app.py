@@ -42,8 +42,8 @@ def index():
 
 @app.route("/telegram-bot", methods = ["POST"])
 def telegram_bot():
-  
-    update = request.json 
+
+    update = request.json
 
 # Dados da mensagem
     update_id = update['update_id']
@@ -56,20 +56,25 @@ def telegram_bot():
     date = datetime.fromtimestamp(update['message']['date']).date()
     time = datetime.fromtimestamp(update['message']['date']).time()
 
-# Define qual será a resposta
-    texto_resposta = ""
-    if message == "/start":
-        texto_resposta = "Este é um robô privado para envio de conteúdo sensível."
-    else:
-        texto_resposta = "estou em fase de testes!" #**************************** AQUI ENTRA A INTEGRAÇÃO COM GSHEETS E SENDGRID / fazer funções
-        
+# Só responde textos
+    try:
+      message = update['message']['text']
+    except KeyError:
+      texto_resposta = "Esse bot suporta apenas conteúdo em texto."
+
 # Define a lista de usuários permitidos
-    usuarios_permitidos = ["kuaraina", "kuaraina2"]    
+    usuarios_permitidos = ["kuaraina", "kuaraina2"]
 
 # Verifica se o usuário está na lista de usuários permitidos e define resposta para não permitidos
     if not user_name or user_name not in usuarios_permitidos:
         texto_resposta = "Você não está autorizado a usar este bot."
     
+# Define qual será a resposta
+    if message == "/start":
+        texto_resposta = "Este é um robô privado para envio de conteúdo sensível."
+    else:
+        texto_resposta = "estou em fase de testes!" #**************************** AQUI ENTRA A INTEGRAÇÃO COM GSHEETS E SENDGRID / fazer funções
+        
 # Envia a resposta       
     nova_mensagem = {"chat_id": chat_id, "text": texto_resposta}
     requests.post(f"https://api.telegram.org./bot{TELEGRAM_API_KEY}/sendMessage", data=nova_mensagem)
