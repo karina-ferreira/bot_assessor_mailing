@@ -51,7 +51,7 @@ def telegram_bot():
 
         # Loop para processar cada atualização recebida
         for cada_update in update:
-            update_id = update["update_id"]
+            update_id = cada_update["update_id"]
 
             # Verifica se o usuário é permitido
             if "username" in cada_update["message"]["from"] and cada_update["message"]["from"]["username"] in usuarios_permitidos:
