@@ -14,6 +14,7 @@ from oauth2client.service_account import ServiceAccountCredentials
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
 
+import obter_info_msg
 
 # ______________________________ variáveis de ambiente _________________________
 
