@@ -77,7 +77,7 @@ def telegram_bot():
     if message == "/start":
         texto_resposta = "Este é um robô privado para envio de conteúdo sensível."
     else:
-        texto_resposta = "estou em fase de testes!" #**************************** AQUI ENTRA A INTEGRAÇÃO COM GSHEETS E SENDGRID / fazer funções
+        texto_resposta = obter_info_msg(update) #"estou em fase de testes!" #**************************** AQUI ENTRA A INTEGRAÇÃO COM GSHEETS E SENDGRID / fazer funções
         
 # Envia a resposta       
     nova_mensagem = {"chat_id": chat_id, "text": texto_resposta}
