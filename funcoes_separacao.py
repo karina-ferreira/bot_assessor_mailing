@@ -32,15 +32,11 @@ sheet_mailing = planilha.worksheet("mailing")
 # ______________________________ funções ____________________________
 
 def obter_mailing(lista_msg):
-  
     global sheet_mailing
     categoria = lista_msg[0]
-    print(categoria)
-
     mailing = sheet_mailing.get_all_records()
-    print(mailing)
-
     emails = []
+    
     for jornalista in mailing:
         print(jornalista['Código'])
         if str(jornalista['Código']) == str(categoria):
@@ -52,6 +48,7 @@ def obter_titulo(lista_msg):
     titulo = lista_msg[1]
     return titulo
 
+  
 def obter_comentario(lista_msg):   
     comentario = lista_msg[2]
     return comentario
