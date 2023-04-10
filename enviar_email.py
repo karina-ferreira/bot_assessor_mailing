@@ -18,7 +18,7 @@ def enviar_email(emails, titulo, comentario):
 
     # Só prepara e envia o e-mail caso a lista 'emails' tenha pelo menos um item
     if not emails:
-        return "O e-mail não será enviado porque o mailing indicado não existe. Use um número entre 1 e 6 para escolher o mailing adequado. Eles são:\n\n1 - Internacional\n2 - Macro\n3 - IBGE\n4 - Dólar\n5 - Mercado\n6 - Investimentos"
+        return "O e-mail não será enviado porque o mailing indicado não existe. Use um número entre 1 e 6 para escolher o mailing adequado. Eles são:\n\n1 - Internacional\n2 - Macro\n3 - IBGE\n4 - Dólar\n5 - Mercado\n6 - Investimentos\n\nA mensagem deve ter o seguinte formato: 'número da categoria (1-6)/título do comentário/comentário em si', separado por barras."
 
     respostas = [] # lista para armazenar as respostas
 
