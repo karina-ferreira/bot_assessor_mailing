@@ -12,3 +12,6 @@ print(resposta.text)
 ```
 ### Conversar com o Bot Assessor de Mailing 
 O [Bot Assessor de Mailing](https://t.me/assessor_mailing_bot) é um canal particular que serve como ferramenta de automatização de um trabalho cotidiano da autora desse repositório. Somente usuários específicos têm permissão para usá-lo. 
+
+### Contato
+Dúvidas, sugestões ou outras questões, mande um oi para [karinaasferreira@gmail.com](karinaasferreira@gmail.com).
