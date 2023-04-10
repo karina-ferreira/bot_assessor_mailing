@@ -11,7 +11,6 @@ SENDGRID_API_KEY = os.environ["SENDGRID_API_KEY_SITE"]
 # ______________________________ função ________________________________________
 
 def enviar_email(emails, titulo, comentario):
- 
   
     # Cria objeto responsável por enviar os emails
     carteiro = sendgrid.SendGridAPIClient(api_key=SENDGRID_API_KEY)
@@ -34,9 +33,10 @@ def enviar_email(emails, titulo, comentario):
         # Enviar o email e armazenar a resposta
         try:
             resposta = carteiro.client.mail.send.post(request_body=email.get())
-            print(f"E-mail enviado para {email.to_emails[0]}. Status: {resposta.status_code}") #tem alguma coisa errada aqui mas depois eu vejo!!
-            respostas.append(resposta)
+            respostaBot = f"E-mail enviado para {cada_email}. Status: {resposta.status_code}"
+            respostas.append(respostaBot)
         except Exception as e:
-            print(f"E-mail enviado para {cada_email}.") # essa ele imprime, a de cima não, mas os e-mails são enviados!
+             respostaBot = f"Falha no envio do e-mail para {cada_email}." 
+             respostas.append(respostaBot)
 
     return respostas
