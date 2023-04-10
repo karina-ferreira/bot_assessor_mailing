@@ -74,14 +74,16 @@ def telegram_bot():
         texto_resposta = resultado_envios
         
 # Define a lista de usuários permitidos
-    usuarios_permitidos = ["kuaraina", "kuaraina2"]    
+    usuarios_permitidos = ["kuaraina", "kuaraina2", "turicas"]    
 
 # Verifica se o usuário está na lista de usuários permitidos e define resposta para não permitidos
     if not user_name or user_name not in usuarios_permitidos:
         texto_resposta = "Você não está autorizado a usar este bot."
     
-# Envia a resposta       
-    nova_mensagem = {"chat_id": chat_id, "text": texto_resposta}
-    requests.post(f"https://api.telegram.org./bot{TELEGRAM_API_KEY}/sendMessage", data=nova_mensagem)
+# Envia a resposta 
+
+    for resposta in texto_resposta:
+      nova_mensagem = {"chat_id": chat_id, "text": resposta} 
+      requests.post(f"https://api.telegram.org./bot{TELEGRAM_API_KEY}/sendMessage", data=nova_mensagem)
 
     return "ok"
