@@ -29,8 +29,6 @@ planilha = api.open_by_key(f'{GOOGLE_SHEETS_KEY}')
 sheet_recebidas = planilha.worksheet("comentarios") 
 sheet_mailing = planilha.worksheet("mailing") 
 
-
-
 # ______________________________ função ____________________________
 
 def enviar_email(emails, titulo, comentario):
